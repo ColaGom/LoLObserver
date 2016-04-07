@@ -2,6 +2,7 @@
     <string name="app_name">LoLObserver</string>
     <string name="label_login">로그인</string>
     <string name="hint_name">소환사명을 입력해주세요.</string>
-    <string name="url_server">http://kr.api.pvp.net</string>
+    <string name="url_server">https://kr.api.pvp.net</string>
     <string name="region">kr</string>
+    <string name="msg_input_name">소환사명을 입력해주세요.</string>
 </resources>

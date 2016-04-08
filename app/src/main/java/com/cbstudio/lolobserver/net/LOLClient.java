@@ -40,4 +40,17 @@ public class LOLClient  {
     public static void getSummonerByName(String userName, Callback<ResponseBody> callback) {
         getApi().getSummonerByName(REGION, userName, Const.KEY_API).enqueue(callback);
     }
+
+    public static void getStatsRank(String userId, Callback<ResponseBody> callback){
+        getApi().getStatsRank(REGION, userId, Const.KEY_API).enqueue(callback);
+    }
+
+    public static void getStatsSummary(String userId, Callback<ResponseBody> callback)
+    {
+        getApi().getStatsSummary(REGION, userId, Const.KEY_API).enqueue(callback);
+    }
+
+    public static  void getServerStatus(Callback<ResponseBody> callback){
+        getApi().getServerStatus().enqueue(callback);
+    }
 }

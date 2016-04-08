@@ -1,9 +1,8 @@
-package com.cbstudio.lolobserver.fragment;
+package com.cbstudio.lolobserver.view.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +11,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.cbstudio.lolobserver.R;
-import com.cbstudio.lolobserver.model.JsonTo;
+import com.cbstudio.lolobserver.base.BaseFragment;
+import com.cbstudio.lolobserver.model.ResponseTo;
 import com.cbstudio.lolobserver.model.Summoner;
 import com.cbstudio.lolobserver.net.LOLClient;
 import com.orhanobut.logger.Logger;
@@ -30,7 +30,7 @@ import retrofit2.Response;
 /**
  * Created by Colabear on 2016-04-07.
  */
-public class FragmentLogin extends Fragment {
+public class FragmentSearch extends BaseFragment {
 
     @Bind(R.id.et_name)
     EditText etName;
@@ -44,21 +44,20 @@ public class FragmentLogin extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_login, container, false);
+        View view = inflater.inflate(R.layout.fragment_search, container, false);
 
         ButterKnife.bind(this, view);
 
         return view;
     }
 
-
-    @OnClick(R.id.btn_login)
+    @OnClick(R.id.btn_search)
     void onClick(View view)
     {
         int id = view.getId();
         switch (id)
         {
-            case R.id.btn_login:
+            case R.id.btn_search:
                 final String userName = etName.getText().toString();
 
                 if(TextUtils.isEmpty(userName))
@@ -66,22 +65,24 @@ public class FragmentLogin extends Fragment {
                     Toast.makeText(getContext(), R.string.msg_input_name, Toast.LENGTH_SHORT).show();
                     return;
                 }
+
                 LOLClient.getSummonerByName(userName, new Callback<ResponseBody>() {
 
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                         try {
-                            String json = response.body().string();
-                            Summoner summoner = JsonTo.summoner(json, userName);
+                            Summoner summoner = ResponseTo.summoner(response, userName);
                             Logger.d(summoner.toString());
+                            activity.onSuccessLogin(summoner);
                         } catch (IOException e) {
+                            Toast.makeText(getContext(), R.string.msg_fail_search, Toast.LENGTH_SHORT).show();
                             e.printStackTrace();
                         } catch (NullPointerException e)
                         {
+                            Toast.makeText(getContext(), R.string.msg_fail_search, Toast.LENGTH_SHORT).show();
                             e.printStackTrace();
                         }
                     }
-
                     @Override
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
                         Logger.d("onFailure");

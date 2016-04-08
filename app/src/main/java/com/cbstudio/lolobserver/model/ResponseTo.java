@@ -5,15 +5,18 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 
+import okhttp3.ResponseBody;
+import retrofit2.Response;
+
 /**
  * Created by Colabear on 2016-04-07.
  */
-public class JsonTo {
+public class ResponseTo {
 
-    public static Summoner summoner(String json, String userName) throws IOException {
+    public static Summoner summoner(Response<ResponseBody> response, String userName) throws IOException {
 
         ObjectMapper mapper = new ObjectMapper();
-        JsonNode node = mapper.readValue(json, JsonNode.class);
+        JsonNode node = mapper.readValue(response.body().string() , JsonNode.class);
 
         return mapper.treeToValue(node.get(userName), Summoner.class);
     }

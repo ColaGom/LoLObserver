@@ -10,28 +10,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class PlayerStatSummaries {
     @JsonProperty("playerStatSummaryType")
     private String summaryType;
-
     @JsonProperty("aggregatedStats")
     private AggregatedStat aggregatedStat;
-
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     private class AggregatedStat
     {
-        /*
-        totalNeutralMinionsKilled
-        totalMinionKills
-        totalTurretsKilled
-        totalNeutralMinionsKilled
-        totalMinionKills
-        totalChampionKills
-        */
-
         @JsonProperty("totalChampionKills")
-        private String totalChampionKill;
+        private String totalChampionKills;
         @JsonProperty("totalAssists")
-        private String totalAssist;
+        private String totalAssists;
         @JsonProperty("totalTurretsKilled")
-        private String totalTurretsKill;
+        private String totalTurretsKilled;
+        @JsonProperty("totalNeutralMinionsKilled")
+        private String totalNeutralMinionsKilled;
+        @JsonProperty("totalMinionKills")
+        private String totalMinionKills;
     }
 }

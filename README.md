@@ -1,6 +1,7 @@
 LoLObserver
 =====
-
+This Android App for lol user.
+It's make possible show current game infomation using widget. 
 
 ##With.
 [LoL API](https://developer.riotgames.com/)<br>

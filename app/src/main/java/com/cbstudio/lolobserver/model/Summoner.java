@@ -2,6 +2,7 @@ package com.cbstudio.lolobserver.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Created by Colabear on 2016-04-07.
  */
@@ -13,6 +14,7 @@ public class Summoner {
     private String profileIconId;
     @JsonProperty("summonerLevel")
     private String summonerLevel;
+    private String summonerName;
 
     @Override
     public String toString() {
@@ -23,17 +25,23 @@ public class Summoner {
         return sb.toString();
     }
 
-    public String getId()
-    {
+    public String getId() {
         return id;
     }
 
-    public String getProfileIconId()
-    {
+    public String getProfileIconId() {
         return profileIconId;
     }
 
     public String getSummonerLevel() {
         return summonerLevel;
+    }
+
+    public void setSummonerName(String name) {
+        summonerName = name;
+    }
+
+    public String getSummonerName() {
+        return summonerName;
     }
 }

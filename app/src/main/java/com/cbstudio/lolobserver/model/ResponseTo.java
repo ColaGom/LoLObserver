@@ -20,4 +20,10 @@ public class ResponseTo {
 
         return mapper.treeToValue(node.get(userName), Summoner.class);
     }
+
+    public static StatSummary statSummary(Response<ResponseBody> response) throws IOException{
+        ObjectMapper mapper = new ObjectMapper();
+
+        return  mapper.readValue(response.body().string(), StatSummary.class);
+    }
 }

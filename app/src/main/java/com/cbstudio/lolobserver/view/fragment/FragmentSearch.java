@@ -73,6 +73,7 @@ public class FragmentSearch extends BaseFragment {
                         try {
                             Summoner summoner = ResponseTo.summoner(response, userName);
                             Logger.d(summoner.toString());
+                            summoner.setSummonerName(userName);
                             activity.onSuccessLogin(summoner);
                         } catch (IOException e) {
                             Toast.makeText(getContext(), R.string.msg_fail_search, Toast.LENGTH_SHORT).show();

@@ -6,4 +6,13 @@
     <string name="region">kr</string>
     <string name="msg_input_name">소환사명을 입력해주세요.</string>
     <string name="msg_fail_search">소환사 검색 실패</string>
+    <string name="prefix_win">승리</string>
+    <string name="prefix_assist">어시스트</string>
+    <string name="prefix_kill_camp">챔피언 킬</string>
+    <string name="prefix_kill_minion">미니언 처치 횟수</string>
+    <string name="prefix_kill_neutral">중립 몬스터 처치 횟수</string>
+    <string name="prefix_kill_turret">타워 파괴 횟수</string>
+    <string name="label_unrank">일반</string>
+    <string name="label_rank">랭크</string>
+    <string name="prefix_lose">패배</string>
 </resources>
